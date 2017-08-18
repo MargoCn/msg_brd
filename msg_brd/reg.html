@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>用户注册</title>
+	<style type="text/css"> 
+    	html{font-size:12px;} 
+    	div{text-align: center;font-size: 100px;} 
+    	fieldset{width:520px; margin: 0 auto;} /*margin后面如果只有两个参数的话,第一个表示top和bottom,第二个表示left和right 因为0 auto,表示上下边界为0,左右则根据宽度自适应相同值(即居中)*/
+    	legend{font-weight:bold; font-size:14px; color:#0000ff;}
+    	label{float:left; width:70px; margin-left:10px;}  /*元素向左浮动*/
+    	.left{margin-left:80px;}
+    	.input{width:150px;}
+    	span{color: #666666;}
+	</style>
+</head>
+<body>
+	<fieldset>    <!--当一组表单元素放到 <fieldset> 标签内时，浏览器会以特殊方式来显示它们，它们可能有特殊的边界、3D效果，或者甚至可创建一个子表单来处理这些元素。<legend> 标签为 fieldset 元素定义标题。 -->
+	<legend>用户注册</legend>
+	<form name="RegForm" method="post" action="reg.php" onSubmit="return InputCheck(this)">
+	<p>
+	<label for="username" class="label">用户名:</label>  
+	<input id="username" name="username" type="text" class="input" /> 
+	<span>(必填，3-15字符长度，支持汉字、字母、数字及_)</span>
+	<p/>
+	<p>
+	<label for="password" class="label">密 码:</label>
+	<input id="password" name="password" type="password" class="input" />
+	<span>(必填，不得少于6位)</span>
+	<p/>
+	<p>
+	<label for="repass" class="label">重复密码:</label>
+	<input id="repass" name="repass" type="password" class="input" />
+	<p/>
+	<p>
+	<input type="submit" name="submit" value="  提交注册  " class="left" />
+	</p>
+	</form>
+	</fieldset>
+<div>
+	<a href="login.html" >点此登录</a>
+</div>
+</body>
+</html>
+
+<script language=JavaScript>
+
+function InputCheck(RegForm)
+{
+  if (RegForm.username.value == "")  
+  {
+    alert("用户名不可为空!");
+    RegForm.username.value;
+    return (false);
+  }
+  if (RegForm.password.value == "")
+  {
+    alert("必须设定登录密码!");
+    RegForm.password.focus();
+    return (false);
+  }
+  if (RegForm.repass.value != RegForm.password.value)
+  {
+    alert("两次密码不一致!");
+    RegForm.repass.focus();
+    return (false);
+  }
+  if (RegForm.email.value == "")
+  {
+    alert("电子邮箱不可为空!");
+    RegForm.email.focus();
+    return (false);
+  }
+}
+
+</script>
